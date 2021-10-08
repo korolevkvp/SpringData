@@ -15,8 +15,7 @@ public class LoggingAspect {
     private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
     @Pointcut("@annotation(com.example.demo.log.LogExecutionTime)")
-    public void stringProcessingMethods() {
-    }
+    public void stringProcessingMethods() {}
 
     @After("stringProcessingMethods()")
     public void logMethodCall(JoinPoint jp) {

@@ -4,7 +4,6 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -13,20 +12,21 @@ import java.util.Objects;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "STUDENTS")
+@Table(name = "student")
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "jpaSequence", sequenceName = "serial", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jpaSequence")
     private int id;
 
-    @Column(name = "FIRST_NAME")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "SECOND_NAME")
+    @Column(name = "second_name")
     private String secondName;
 
-    @Column(name = "AGE")
+    @Column(name = "age")
     private int age;
 
     @Override

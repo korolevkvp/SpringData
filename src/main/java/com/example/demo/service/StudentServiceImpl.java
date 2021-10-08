@@ -33,21 +33,11 @@ public class StudentServiceImpl implements StudentService {
 
     public void init() {
         Student a = Student.builder()
-                .age(21)
                 .firstName("Vadim")
                 .secondName("Korolev")
+                .age(21)
                 .build();
-        Student b = Student.builder()
-                .age(22)
-                .firstName("Violetta")
-                .secondName("Zozulya")
-                .build();
-        Student c = Student.builder()
-                .age(20)
-                .firstName("Artyom")
-                .secondName("Balakin")
-                .build();
-        List<Student> list = Arrays.asList(a, b, c);
-        studentRepository.saveAll(list);
+        System.out.println(a);
+        studentRepository.save(a);
     }
 }

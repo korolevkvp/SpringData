@@ -1,0 +1,58 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-lesson1.yaml
+  - changeSet:
+      id: 1
+      author: postgres
+      changes:
+        - createTable:
+            tableName: student
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+              - column:
+                  name: second_name
+                  type: varchar(255)
+              - column:
+                  name: age
+                  type: INT
+  - changeSet:
+      id: 2
+      author: postgres
+      comment: "Create test student"
+      changes:
+        - insert:
+            tableName: student
+            columns:
+              - column:
+                  name: first_name
+                  value: "Test"
+              - column:
+                  name: second_name
+                  value: "Student"
+              - column:
+                  name: age
+                  value: 24
+        - insert:
+            tableName: student
+            columns:
+              - column:
+                  name: first_name
+                  value: "Test2"
+              - column:
+                  name: second_name
+                  value: "Student2"
+              - column:
+                  name: age
+                  value: 25
+      rollback:
+        - delete:
+            tableName: student
+            where: first_name in ('Test', 'Test2')
