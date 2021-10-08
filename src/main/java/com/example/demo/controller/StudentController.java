@@ -5,6 +5,7 @@ import com.example.demo.log.LogExecutionTime;
 import com.example.demo.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.*;
 
 @RestController
@@ -12,8 +13,8 @@ public class StudentController {
 
     private final StudentService service;
 
-    public StudentController(StudentService dataBaseService) {
-        service = dataBaseService;
+    public StudentController(StudentService studentService) {
+        service = studentService;
     }
 
     @GetMapping
@@ -37,8 +38,4 @@ public class StudentController {
         service.add(student);
     }
 
-    @PostMapping("init")
-    public void init() {
-        service.init();
-    }
 }
