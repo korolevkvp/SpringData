@@ -5,7 +5,6 @@ import com.example.demo.log.LogExecutionTime;
 import com.example.demo.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import java.util.*;
 
 @RestController

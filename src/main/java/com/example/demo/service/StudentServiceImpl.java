@@ -4,6 +4,8 @@ import com.example.demo.entities.Student;
 import com.example.demo.repositories.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(isolation = Isolation.SERIALIZABLE)
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
