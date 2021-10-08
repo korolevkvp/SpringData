@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.Student;
+import com.example.demo.log.LogExecutionTime;
 import com.example.demo.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class StudentController {
     }
 
     @GetMapping
-    //@LogExecutionTime
+    @LogExecutionTime
     public Iterable<Student> getAllStudents() {
         return service.getAllStudents();
     }
@@ -34,5 +35,10 @@ public class StudentController {
     @PostMapping
     public void add(@RequestBody Student student) {
         service.add(student);
+    }
+
+    @PostMapping("init")
+    public void init() {
+        service.init();
     }
 }

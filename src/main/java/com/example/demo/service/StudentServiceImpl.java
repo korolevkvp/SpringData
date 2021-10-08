@@ -5,6 +5,8 @@ import com.example.demo.repositories.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,7 +19,6 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findAll();
     }
 
-
     public Optional<Student> getStudent(String id) {
         return studentRepository.findById(Integer.parseInt(id));
     }
@@ -28,5 +29,25 @@ public class StudentServiceImpl implements StudentService {
 
     public void add(Student student) {
         studentRepository.save(student);
+    }
+
+    public void init() {
+        Student a = Student.builder()
+                .age(21)
+                .firstName("Vadim")
+                .secondName("Korolev")
+                .build();
+        Student b = Student.builder()
+                .age(22)
+                .firstName("Violetta")
+                .secondName("Zozulya")
+                .build();
+        Student c = Student.builder()
+                .age(20)
+                .firstName("Artyom")
+                .secondName("Balakin")
+                .build();
+        List<Student> list = Arrays.asList(a, b, c);
+        studentRepository.saveAll(list);
     }
 }
