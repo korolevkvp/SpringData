@@ -15,4 +15,6 @@ public interface StudentService {
     void delete(String id);
 
     void add(Student student);
+
+    Optional<Student> findByFirstName(String firstName);
 }

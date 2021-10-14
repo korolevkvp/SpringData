@@ -40,7 +40,10 @@ public class StudentServiceImpl implements StudentService {
                 .secondName("Korolev")
                 .age(21)
                 .build();
-        System.out.println(a);
         studentRepository.save(a);
+    }
+
+    public Optional<Student> findByFirstName(String firstName) {
+        return studentRepository.findByFirstName(firstName);
     }
 }

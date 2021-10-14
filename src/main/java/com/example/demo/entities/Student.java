@@ -15,9 +15,11 @@ import javax.persistence.*;
 @Table(name = "student")
 public class Student {
 
+//    для postgresql
+//    @SequenceGenerator(name = "jpaSequence", sequenceName = "serial", allocationSize = 1)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jpaSequence")
     @Id
-    @SequenceGenerator(name = "jpaSequence", sequenceName = "serial", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jpaSequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "first_name")
@@ -40,5 +42,9 @@ public class Student {
     @Override
     public int hashCode() {
         return 0;
+    }
+
+    public static Object getName(Student object) {
+        return object.firstName;
     }
 }

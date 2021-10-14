@@ -37,4 +37,8 @@ public class StudentController {
         service.add(student);
     }
 
+    @GetMapping("name/{firstName}")
+    public String findByFirstName(@PathVariable String firstName) {
+        return service.findByFirstName(firstName).toString();
+    }
 }
